@@ -1,5 +1,7 @@
 import { NavbarSimple } from './Components/Navbar'
 import { DndListHandle } from './Components/dndlist'
+import { Section } from './Components/Section'
+
 import { Container, Grid } from '@mantine/core';
 
 function App() {
@@ -16,9 +18,11 @@ function App() {
         <Grid.Col span={3}>
           <NavbarSimple />
         </Grid.Col>
-        <Grid.Col span={8}>
+        <Grid.Col span={9} style={{background: "#f2f4fb"}}>
           <Container>
-            <DndListHandle data={data} />
+            {/* <DndListHandle data={data} />
+             */}
+             <Section></Section>
           </Container>
         </Grid.Col>
       </Grid>

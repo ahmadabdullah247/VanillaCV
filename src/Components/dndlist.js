@@ -8,9 +8,8 @@ const useStyles = createStyles((theme) => ({
     display: 'flex',
     alignItems: 'center',
     borderRadius: theme.radius.md,
-    border: `1px solid ${
-      theme.colorScheme === 'dark' ? theme.colors.dark[5] : theme.colors.gray[2]
-    }`,
+    border: `1px solid ${theme.colorScheme === 'dark' ? theme.colors.dark[5] : theme.colors.gray[2]
+      }`,
     padding: `${theme.spacing.sm}px ${theme.spacing.xl}px`,
     paddingLeft: theme.spacing.xl - theme.spacing.md, // to offset drag handle
     backgroundColor: theme.colorScheme === 'dark' ? theme.colors.dark[5] : theme.white,
