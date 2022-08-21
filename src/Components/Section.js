@@ -1,14 +1,12 @@
-import { createStyles, Text, Input, Group, Button } from '@mantine/core';
+import { createStyles, Group, Button } from '@mantine/core';
 import { useListState } from '@mantine/hooks';
 import { DragDropContext, Droppable, Draggable } from 'react-beautiful-dnd';
-import { IconGripVertical, IconPlus } from '@tabler/icons';
-import { Subsection } from './Subsection'
-import React, { useState } from "react";
-import { Cone } from 'tabler-icons-react';
+import {  IconPlus } from '@tabler/icons';
+import { SectionItem } from './SectionItem'
 
 const useStyles = createStyles((theme) => ({
   item: {
-    display: 'flex',
+    // display: 'flex',
     alignItems: 'center',
     borderRadius: theme.radius.md,
     border: `1px solid ${theme.colorScheme === 'dark' ? theme.colors.dark[5] : theme.colors.gray[2]
@@ -23,7 +21,7 @@ const useStyles = createStyles((theme) => ({
     boxShadow: theme.shadows.sm,
   },
 
-  symbol: {
+  id: {
     fontSize: 30,
     fontWeight: 700,
     width: 60,
@@ -45,7 +43,7 @@ interface SectionProps {
   data: {
     position: number;
     mass: number;
-    symbol: string;
+    id: string;
     name: string;
   }[];
 }
@@ -55,40 +53,24 @@ export function Section({ data }: SectionProps) {
   const [state, handlers] = useListState(data);
 
   function handleRemove(id) {
-    const newList = state.filter((item) => item.symbol !== id);
+    const newList = state.filter((item) => item.id !== id);
     handlers.setState(newList)
 
     // setList(newList);
   }
   const onAddBtnClick = (event) => {
-    handlers.append({ "position": 6, "mass": 12.011, "symbol": "xxx", "name": "Carbon" });
+    handlers.append({ "position": 6, "mass": 12.011, "id": "xxx", "name": "Carbon" });
   };
 
   const items = state.map((item, index) => (
-    <Draggable draggableId={item.symbol.toString()} key={item.symbol} index={index}>
+    <Draggable draggableId={item.id.toString()} key={item.id} index={index}>
       {(provided, snapshot) => (
         <div
           className={cx(classes.item, { [classes.itemDragging]: snapshot.isDragging })}
           ref={provided.innerRef}
           {...provided.draggableProps}
         >
-          <div {...provided.dragHandleProps} className={classes.dragHandle}>
-            <IconGripVertical size={18} stroke={1.5} />
-          </div>
-          <div className={classes.fields}>
-            <form className={classes.form} onSubmit={(event) => event.preventDefault()}>
-              <Text size="lg" weight={700} className={classes.title}>
-                {item.name}
-              </Text>
-              {/* <Subsection></Subsection> */}
-              <Group position="center" mt="md">
-                <Button type="submit" radius="xl">
-                  <IconPlus size={16} />
-                </Button>
-              </Group>
-            </form>
-          </div>
-          <Button type="button" onClick={() => handleRemove(item.symbol)} />
+          <SectionItem provided={provided} handleRemove={handleRemove} item={item}/>
         </div>
       )}
     </Draggable>
