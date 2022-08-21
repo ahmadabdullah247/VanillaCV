@@ -1,7 +1,7 @@
 
 
 import { IconGripVertical, IconX } from '@tabler/icons';
-import { createStyles, Text, Button, Grid } from '@mantine/core';
+import { createStyles, Text, Grid, ActionIcon } from '@mantine/core';
 import { Subsection } from './Subsection'
 
 const useStyles = createStyles((theme) => ({
@@ -23,30 +23,30 @@ export function SectionItem({ item, provided, handleRemove }) {
     const { classes } = useStyles();
     return (
         <>
-            <Grid>
-                <Grid.Col span={1}>
+            <Grid columns={24}>
+                <Grid.Col span={2}>
                 {/* {child} */}
                     <div {...provided.dragHandleProps} className={classes.dragHandle}>
-                        <IconGripVertical size={18} stroke={1.5} />
+                        <IconGripVertical size={16}  />
                     </div>
                 </Grid.Col>
-                <Grid.Col span={10}>
+                <Grid.Col span={21}>
                 {/* {child} */}
                     <div>
                         <form className={classes.form} onSubmit={(event) => event.preventDefault()}>
                             <Text size="lg" weight={700} className={classes.title}>
                                 {item.name}
                             </Text>
-                            {/* <Subsection></Subsection> */}
+                            <Subsection></Subsection>
                         </form>
                     </div>
                 </Grid.Col>
                 <Grid.Col span={1}>
                 {/* {child} */}
                     <div>
-                        <Button type="submit" onClick={() => handleRemove(item.id)}>
-                            <IconX size={9} stroke={1.5} />
-                        </Button>
+                        <ActionIcon type="submit" onClick={() => handleRemove(item.id)}>
+                            <IconX  size={16}/>
+                        </ActionIcon>
                     </div>
                 </Grid.Col>
             </Grid>
