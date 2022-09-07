@@ -1,7 +1,6 @@
 import React from 'react';
 import { NavbarSimple } from './Components/Navbar'
 import Section from './Components/Section/Section';
-import './App.css';
 import { AppShell } from '@mantine/core';
 
 function App() {

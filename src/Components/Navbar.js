@@ -1,11 +1,9 @@
 import React, { useState } from 'react';
-import { createStyles, Navbar, Group, Code } from '@mantine/core';
+import { createStyles, Navbar, Group } from '@mantine/core';
 import {
     BellRinging,
     Fingerprint,
     Key,
-    Settings,
-    TwoFA,
     DatabaseImport,
     Receipt2,
     SwitchHorizontal,
@@ -111,12 +109,12 @@ export function NavbarSimple() {
             </Navbar.Section>
 
             <Navbar.Section className={classes.footer}>
-                <a href="#" className={classes.link} onClick={(event) => event.preventDefault()}>
+                <a href="/setting" className={classes.link} onClick={(event) => event.preventDefault()}>
                     <SwitchHorizontal className={classes.linkIcon} />
                     <span>Settings</span>
                 </a>
 
-                <a href="#" className={classes.link} onClick={(event) => event.preventDefault()}>
+                <a href="/about" className={classes.link} onClick={(event) => event.preventDefault()}>
                     <Logout className={classes.linkIcon} />
                     <span>About</span>
                 </a>
